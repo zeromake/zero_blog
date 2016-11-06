@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	{% block head %}
+    <meta charset="utf-8">
+    <title>zeromake static blog</title>
+	<link rel="stylesheet" href="/static/css/markdownpad-github.css" type="text/css">
+	<style>
+		body{
+			padding: 0;
+		}
+		.base_header{
+			margin-left: 1em;
+		}
+		.zero_content {
+		  padding: 1em;
+		  border: 1px solid #ddd;
+		  margin: 16px auto;
+		}
+
+		/* author social links */
+		.author-info {
+		    margin-top: 10px;
+		}
+		.author-info a {
+		    color: #FFF;
+		    text-decoration: none;
+		    padding: 4px 7px;
+		    font-size: 14px;
+		    white-space: nowrap;
+		    margin-right: 10px;
+		}
+		.author-info a:hover {
+		    color: #FFF;
+		    text-decoration: none;
+		    filter: alpha(opacity=70);
+		    opacity: 0.7;
+		}
+		.author-info .author-info-github {
+		    background-color: #4A4A4A;
+		}
+		.author-info .author-info-sf {
+		    background-color: #5CB85C;
+		}
+	</style>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh">
+	<meta name="viewport" content="width=device-width">
+    {% endblock%}
+</head>
+
+<body>
+	<header class="base_header">
+		<h1><a href="{{ url_for("index") }}">zeromake blog</a></h1>
+		<div class="author-info">
+	    	<a class="author-info-github" href="https://github.com/zeromake">GitHub</a>
+	    	<a class="author-info-sf" href="https://segmentfault.com/u/zerobuild">SegmentFault</a>
+	    </div>
+    </header>
+    <div class="zero_content">
+		<div class="markdown-content">
+		    {% block content %}
+		    {% endblock content %}
+	    </div>
+    </div>
+</body>
+</html>

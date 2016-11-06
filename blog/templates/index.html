@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+	 {{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="markdown-body">
+    <div id="content">
+        {% for page in pages %}
+        <article>
+	        <header class="post-header">
+	            <h1 class="post-title">
+	                <a href="{{ url_for('page', path=page.path) }}">{{ page.title }}</a>
+	            </h1>
+	        </header>
+	        <footer class="post-meta">
+	            <span class="post-meta-item post-meta-date">
+	                {{ page.meta.date }}
+	            </span>
+        	</footer>
+    	</article>
+        {% else %}
+        <article>没有博文.</article>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

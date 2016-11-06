@@ -1,0 +1,8 @@
+Flask
+Flask-FlatPages
+Frozen-Flask
+Markdown
+Pygments
+pymdown-extensions
+uwsgi
+supervisor
