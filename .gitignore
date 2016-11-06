@@ -1,2 +1,5 @@
+*.pid
+*.log
+*.pyc
 static_blog/
 blog/build/

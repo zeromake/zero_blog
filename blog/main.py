@@ -38,7 +38,7 @@ def str_to_md5(s):
     m.update(s.encode('utf8'))
     return m.hexdigest()
 
-@app.route('/static/css/pygments.css')
+@app.route('/css/pygments.css')
 def pygments_css():
     return pygments_style_defs('xcode'), 200, {'Content-Type': 'text/css'}
     # ['colorful', 'fruity', 'emacs', 'pastie', 'default', 'rrt', 'igor',
