@@ -17,4 +17,3 @@ cp -R ../blog/build/* ./
 
 git add ./
 
-git commit -m "bash auto commit on `date '+%Y-%m-%d %H:%M:%S'`" && git push
