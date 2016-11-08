@@ -15,7 +15,7 @@ last_date: 2016-11-4 15:07:50
 2. 一些需要修改的库无法使用cdn的会说明。
 3. cdn使用bootcdn对应国内环境
 4. 这里面说到的vue源码均为2.0.3
-5. 源码下载地址: [vue_not_webpack](/static/file/vue2_not_webpack.tar.xz)
+5. 源码下载: [地址](https://github.com/zeromake/vue_demo)
 
 ## 一、Hello World
 
@@ -67,7 +67,7 @@ template表示模板里面的文字会被编译后转换到挂载点上
 
 ### 源码：
 
-在git仓库的hello_world标签中
+在git仓库的hello_world分支中
 
 ## 二、HelloWorld2
 ### js/hello_world.js
@@ -92,7 +92,7 @@ new Vue({
 
 ### 源码：
 
-在git仓库的hello_world2标签中
+在git仓库的hello_world2分支中
 
 ## 三、使用requirejs
 
@@ -151,7 +151,7 @@ new Vue({
 这个没有必要效果图了。。
 
 ### 源码:
-在git仓库的hello_requirejs标签中
+在git仓库的hello_requirejs分支中
 
 ## 四、使用其它vue库
 这里我用[element-ui](https://github.com/ElemeFE/element)来做示例
@@ -205,4 +205,4 @@ new Vue({
 ![hello_element](/static/img/vue_not_webpack/hello_element.png)
 
 ### 源码：
-在git仓库的hello_element标签中
+在git仓库的hello_element分支中
