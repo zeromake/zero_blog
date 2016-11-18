@@ -2,7 +2,7 @@ FROM alpine:latest
 
 MAINTAINER zeromake <a390720046@gmail.com>
 
-COPY ./blog/requirements.txt /tmp/requirements.txt
+COPY ./blog/requirements_docker.txt /tmp/requirements.txt
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories &&\
  	apk --update add python python-dev py-pip nginx gcc g++ make linux-headers &&\
@@ -13,6 +13,6 @@ COPY conf/uwsgi.ini /etc/uwsgi/
 COPY conf/supervisord.conf /etc/supervisor/supervisord.conf
 
 WORKDIR /blog
-EXPOSE 80 443
+EXPOSE 80
 
 CMD ["supervisord"]

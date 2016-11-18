@@ -4,5 +4,3 @@ Frozen-Flask
 Markdown
 Pygments
 pymdown-extensions
-uwsgi
-supervisor
