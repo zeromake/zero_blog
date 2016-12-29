@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% block head %}
-	 {{ super() }}
+{% block title %}{{ page.title }}-{% endblock %}
+{% block head_other %}
 	<link rel="stylesheet" href="{{ url_for('pygments_css') }}">
 	<script type="text/javascript">
 		var duoshuoQuery = {short_name:"fly-zero"};
 	</script>
 	<script src="//static.duoshuo.com/embed.js" charset="utf-8"></script>
 {% endblock %}
+
 {% block content %}
 	<h2>{{ page.title }}</h2>
 	<div class="markdown-body">
