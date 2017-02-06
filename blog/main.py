@@ -11,7 +11,6 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_MARKDOWN_EXTENSIONS = ['markdown.extensions.extra','markdown.extensions.codehilite','pymdownx.github', 'markdown.extensions.toc', 'markdown.extensions.tables']
-
 app = Flask(__name__)
 app.config.from_object(__name__)
 flatpages = FlatPages(app)
