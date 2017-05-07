@@ -12,11 +12,11 @@ last_date: 2017-03-05 12:26:04
 - 并且修复原有包的一些 bug。
 - 这篇博文我将写以下内容
 
-> - koa 中间组件的编写。
-> - 把`webpack-dev-middleware`这种`express`中间组件改造为一个`koa`中间组件。
+> - koa 中间件的编写。
+> - 把`webpack-dev-middleware`这种`express`中间件改造为一个`koa`中间件。
 
 
-## 一. koa与express的普通中间组件区别。
+## 一. koa与express的普通中间件区别。
 - npm 包安装
 ``` shell
 npm i koa express -D
@@ -54,25 +54,25 @@ ExpressApp.use(function(req, res, next){
 })
 ```
 
-- express 中间组件运行逻辑
+- express 中间件运行逻辑
 
-> 1. 中间组件为一个方法接受 req,res,next 三个参数。
+> 1. 中间件为一个方法接受 req,res,next 三个参数。
 > 2. 中间可以执行任何方法包括异步方法。
-> 3. 最后一定要通过`res.end`或者`next`来通知结束这个中间组件方法。
+> 3. 最后一定要通过`res.end`或者`next`来通知结束这个中间件方法。
 > 4. 如果没有执行`res.end`或者`next`访问会一直卡着不动直到超时。
-> 5. 并且在这之后的中间组件也会没法执行到。
+> 5. 并且在这之后的中间件也会没法执行到。
 
-- koa 的中间组件运行逻辑
+- koa 的中间件运行逻辑
 
-> 1. 中间组件为一个方法或者其它，这里就讲方法的，接受`ctx,next`两个参数。
+> 1. 中间件为一个方法或者其它，这里就讲方法的，接受`ctx,next`两个参数。
 > 2. 方法中可以执行任何同步方法。可以使用返回一个`Promise`来做异步。
-> 3. 中间组件通过方法结束时的返回来判断是否进入下一个中间组件。
-> 4. 返回一个`Promise`对象koa会等待异步通知完成。then中可以返回next()来跳转到下一个中间组件。
+> 3. 中间件通过方法结束时的返回来判断是否进入下一个中间件。
+> 4. 返回一个`Promise`对象koa会等待异步通知完成。then中可以返回next()来跳转到下一个中间件。
 > 5. 相同如果`Promise`没有异步通知也会卡住。
 
-## 二. 异步中间组件的区别
+## 二. 异步中间件的区别
 
-- express 异步中间组件
+- express 异步中间件
 ``` javascript
 ExpressApp.use(function(req, res, next){
     setTimeout(function(){
@@ -82,7 +82,7 @@ ExpressApp.use(function(req, res, next){
 ```
 express 的异步就是最普通的回调
 
-- koa 异步中间组件
+- koa 异步中间件
 ``` javascript
 KoaApp.use(function(ctx, next){
     return new Promise(function(resolve, reject) {
@@ -96,10 +96,10 @@ KoaApp.use(function(ctx, next){
 })
 
 ```
-koa 的异步通过`Promise`来做这里我`then`不写代表`resolve`不切换到下一个中间组件。
-`catch`直接绑定`next`，用`reject`来通知跳转到下一个中间组件。
+koa 的异步通过`Promise`来做这里我`then`不写代表`resolve`不切换到下一个中间件。
+`catch`直接绑定`next`，用`reject`来通知跳转到下一个中间件。
 
-## 三. 修改一个express中间组件到koa
+## 三. 修改一个express中间件到koa
 - hello-test.js
 ``` javascript
 module.exports = function(req, res, next){
@@ -143,13 +143,13 @@ const test = require('./hello-test.js')
 KoaApp.use(function *(next){
     const res = this.res
     const req = this.req
-    // 这种写法会导致后面注册的中间组件都失效。
+    // 这种写法会导致后面注册的中间件都失效。
     yield test(res, req, next)
 })
 KoaApp.use(async function (ctx, next){
     const res = ctx.res
     const req = ctx.req
-    // 这种写法会导致后面注册的中间组件都失效。
+    // 这种写法会导致后面注册的中间件都失效。
     await test(res, req, next)
 })
 

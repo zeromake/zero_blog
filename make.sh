@@ -2,7 +2,7 @@
 git_href=https://github.com/zeromake/zeromake.github.io.git
 
 
-sudo docker run -v ${PWD}/blog:/blog zeromake/blog-docker python /blog/main.py make &&\
+sudo docker run -v ${PWD}/blog:/blog zeromake/blog python /blog/main.py make &&\
  sudo chown $USER:$USER ${PWD}/blog/build -R
 
 if [ ! -x "static_blog" ]; then
